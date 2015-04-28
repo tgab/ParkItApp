@@ -115,7 +115,7 @@ $( document ).on( "pagecreate", "#bookingPage", function() {
 	
 	$('#creditCardForm').submit(function() {
 		alert("Success! You can now park in your spot.\nDetails and a receipt will be emailed to you.");
-		return true;
+		return false;
 	});
 });
 
