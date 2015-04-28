@@ -4,6 +4,7 @@
  */
  
 var latLng;
+var map;
 
 $( document ).on( "pagecreate", "#findParkingSpot", function() {
     var defaultLatLng = new google.maps.LatLng(34.018747, -118.282960);  // Default to Los Angeles, CA when no geolocation support
@@ -41,7 +42,7 @@ $( document ).on( "pagecreate", "#findParkingSpot", function() {
             center: latlng,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
-        var map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
+        map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
         // Add an overlay to the map of current lat/lng
 		
         var marker = new google.maps.Marker({
@@ -125,4 +126,12 @@ $( document ).on( "pageshow", "#bookingPage", function() {
 		$("#slider-fill").slider("refresh");
 	}
 });
+
+$( document ).on( "pageshow", "#findParkingSpot", function() {
+	if (typeof(map) != 'undefined'){
+		window.console.log("Checking resize");
+		google.maps.event.trigger(map, "resize");
+	}
+});
+
 
